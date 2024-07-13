@@ -1,0 +1,16 @@
+{
+  "name": "eslint-custom-rules",
+  "version": "0.0.1",
+  "description": "creation and test of custom eslint rules",
+  "main": "index.html",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^9.6.0",
+    "jest": "^29.7.0"
+  }
+}
