@@ -1,5 +1,3 @@
-"use strict";
-
 // ============
 // Import
 // ============
@@ -18,7 +16,8 @@ module.exports = [
     plugins: { customPlugin },
     rules: {
       "customPlugin/check-events-name": "error",
-      "customPlugin/check-css-variables": "error",
+      "customPlugin/check-css-variables": "warn",
+      "customPlugin/named-parameters-warning": "warn",
     },
   },
 ];

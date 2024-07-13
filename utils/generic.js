@@ -10,7 +10,7 @@ module.exports = {
    */
   findClosestString: (targetStr, strArr) => {
     const getCharCount = (str) => {
-      // Return a register of the char occurences, i.e. 'click' = { 'c': 2, 'l': 1, 'i': 1, 'k': 1 }
+      // Return a register of the char occurences, e.g. 'click' = { 'c': 2, 'l': 1, 'i': 1, 'k': 1 }
       const reg = {};
       for (let s of str) {
         reg[s] = (reg[s] || 0) + 1;

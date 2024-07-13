@@ -3,6 +3,7 @@
 // ============
 const checkEventsName = require("./rules/check-events-name");
 const checkCssVariables = require("./rules/check-css-variables");
+const namedParametersWarning = require("./rules/named-parameters-warning");
 
 // ============
 // Export
@@ -10,7 +11,7 @@ const checkCssVariables = require("./rules/check-css-variables");
 module.exports = {
     rules: { 
       "check-events-name": checkEventsName,
-      "check-css-variables": checkCssVariables
-      // ... add other rules
+      "check-css-variables": checkCssVariables,
+      "named-parameters-warning": namedParametersWarning,
     }
 };

@@ -29,7 +29,9 @@ module.exports = {
   meta: {
     type: "problem",
     docs: {
-      description: "Detects typos in event names passed to addEventListener.",
+      description: "Detects typos in event names passed to addEventListener, and suggest a fix",
+      category: "Best Practices",
+      recommended: false,
     },
     fixable: "code",
     schema: [],
@@ -38,24 +40,26 @@ module.exports = {
     return {
       CallExpression(node) {
         const callee = node.callee;
-        if ( callee.type === "MemberExpression" && callee.property && callee.property.name === "addEventListener" ) {
-          const args = node.arguments;
+        const isAddingEventListener = callee.type === "MemberExpression" && callee.property && callee.property.name === "addEventListener";
+        
+        if (!isAddingEventListener) { return; }
+        const args = node.arguments;
+        const isStringEvent = args && args.length > 0 && args[0].type === "Literal" && args[0].value.length;
 
-          if (args && args.length > 0 && args[0].type === "Literal" && args[0].value.length) {
-            const evName = args[0].value;
+        if ( !isStringEvent ) { return; }
+        const evName = args[0].value;
 
-            if (!validEventNames.includes(evName)) {
-              const closestEvName = findClosestString(evName, validEventNames);
-              context.report({
-                node: args[0],
-                message: `${evName} is not a valid event name`,
-                fix(fixer) {
-                  return fixer.replaceText(args[0], `"${closestEvName}"`);
-                }
-              });
-            }
-          }
-        }
+        if (validEventNames.includes(evName)) { return; }
+
+        // Replace invalid event name with the closest valid one
+        const closestEvName = findClosestString(evName, validEventNames);
+        context.report({
+          node: args[0],
+          message: `${evName} is not a valid event name`,
+          fix(fixer) {
+            return fixer.replaceText(args[0], `"${closestEvName}"`);
+          },
+        });
       },
     };
   },
