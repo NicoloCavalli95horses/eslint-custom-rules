@@ -12,25 +12,26 @@ This rule detects misspelled events name and suggest a quick fix based on most c
 - Improve the development experience
 - Automatically suggest the most likely event name
 
+### Named params warning
+This rule detects functions declaration with 3 or more parameters and suggest using named parameters within an object.
+
+![named parameters warning](/public/assets/named_params_warning.png)
+
+- Improve readability and maintainability of functions by promoting best practices
+- Simplify complex parameter structures, such as: ```function( {a, b}, c, d ) { ... } ``` by suggesting the use of a single object
+- If the ```rest``` operator is used, the rule isolates this element
+- Explicitly defined default parameters are perserved
+- Enhance consistency across the codebase
+- In projects that do not use TypeScript, explicit named parameters help developers better understand the expected parameter types
+
 ### Misspelled CSS variables
 This rule detects misspelled CSS variables name in JavaScript files, and suggest a quick fix based on global CSS variables defined in a main.css file
 
 ![misspelled events name](/public/assets/css_var_error.png)
 
 - Prevent error-prone situations
-- Automatically suggest the most likely CSS variable name
-- When using a new global variable, this remind the developer to create the global variable
-
-### Named params warning
-This rule detects functions with 3 or more parameters and suggest using named parameters within an object.
-
-![named parameters warning](/public/assets/named_params_warn.png)
-
-- Improve readability and maintainability of functions by promoting best practices.
-- Simplify complex parameter structures, such as: ```function( {a, b}, c, d ) { ... } ``` by suggesting the use of a single object.
-- The ```rest``` operator, if any, is isolated, and a compact and intuitive structure of parameters is suggested
-- Enhance consistency across the codebase
-- In projects that do not use TypeScript,explicit named parameters help developers better understand the expected parameter types
+- Automatically suggest the most likely CSS variable name based on available global CSS variables
+- When inserting a new global variable, this rule reminds the developer to create the global variable
 
 ## Run tests
 Execute the tests using the command:

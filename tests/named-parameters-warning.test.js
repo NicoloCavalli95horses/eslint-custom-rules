@@ -23,11 +23,13 @@ const OPTIONS = {
 const RULE_NAME = "check-events-name";
 const TEST_STEPS = {
   valid: [
-    { code: 'function test( { a, b, c } ) { return; }' },
-    { code: 'function test( { a, b, c } = {} ) { return; }' },
+    { code: 'function test( {a, b, c} ) { return; }' },
+    { code: 'function test( {a, b, c} = {} ) { return; }' },
     { code: 'function test() { return; }' },
     { code: 'function test( {a} ) { return; }' },
-    { code: 'function test( { a, b, c } = {}, ...d ) { return; }' },
+    { code: 'function test( {a, b, c} = {}, ...d ) { return; }' },
+    { code: 'function test( {a=0, b=1, c=2} = {} ) { return; }' },
+    { code: 'function test( {a=false, b="test", c=[], d:{}} ) { return; }' },
   ],
   invalid: [
     {
@@ -49,6 +51,16 @@ const TEST_STEPS = {
       code: 'function test({a, b}, c, d, ...e) { return; }',
       errors: [{ message: "This function has 3 or more parameters: consider using named parameters within a single object" }],
       output: 'function test({ a, b, c, d } = {}, ...e) { return; }',
+    },
+    {
+      code: 'function test(a=0, b=1, c=2, d=3) { return; }',
+      errors: [{ message: "This function has 3 or more parameters: consider using named parameters within a single object" }],
+      output: 'function test({ a=0, b=1, c=2, d=3 } = {}) { return; }',
+    },
+    {
+      code: 'function test(a, b=true, c=[], d="test", e={}, ...f) { return; }',
+      errors: [{ message: "This function has 3 or more parameters: consider using named parameters within a single object" }],
+      output: 'function test({ a, b=true, c=[], d="test", e={} } = {}, ...f) { return; }',
     },
   ],
 };

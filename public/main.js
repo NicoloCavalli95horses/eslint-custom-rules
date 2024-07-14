@@ -10,9 +10,7 @@ btn.addEventListener("clck", () => {});
 // Invalid css variable shall trigger an eslint error. A fix shall be suggested
 btn.style.color = "var(--text-grn)";
 
-// Prefer named parameters if a function needs 3 or more parameters
-function calcPayment( price, discount, quantity ) {
+// Prefer named parameters when 3 or more parameters are required
+function calcPayment( price = 100, discount = 20, quantity = 2 ) {
   return (price - ( price * discount / 100 )) * quantity;
 }
-
-

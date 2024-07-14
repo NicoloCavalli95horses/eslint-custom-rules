@@ -1,3 +1,6 @@
+// ============
+// Export
+// ============
 module.exports = {
   meta: {
     type: "suggestion",
@@ -28,6 +31,14 @@ module.exports = {
                 // rest parameter, e.g, fn ( a, b, ...c )
                 restOpt = p.argument.name;
                 return undefined;
+              } else if ( p.type === 'AssignmentPattern') {
+                // parameter with explicit default value, e.g., fn (a=1, b=true, c=[], d={})
+                const left = p.left.name;
+                const right = typeof p.right.value === 'string' ? `"${p.right.value}"`
+                  : p.right.type === "ObjectExpression" ? "{}"
+                    : p.right.type === "ArrayExpression" ? "[]"
+                      : p.right.value;
+                return `${left}=${right}`;
               }
               // regular parameter
               return p.name
