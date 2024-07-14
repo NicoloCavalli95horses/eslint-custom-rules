@@ -13,7 +13,7 @@ This rule detects misspelled events name and suggest a quick fix based on most c
 - Automatically suggest the most likely event name
 
 ### Named params warning
-This rule detects functions declaration with 3 or more parameters and suggest using named parameters within an object.
+This rule detects function declaration with 3 or more parameters and suggests using named parameters within an object.
 
 ![named parameters warning](/public/assets/named_params_warning.png)
 
@@ -22,7 +22,7 @@ This rule detects functions declaration with 3 or more parameters and suggest us
 - If the ```rest``` operator is used, the rule isolates this element
 - Explicitly defined default parameters are perserved
 - Enhance consistency across the codebase
-- In projects that do not use TypeScript, explicit named parameters help developers better understand the expected parameter types
+- In projects that do not use TypeScript, explicitly named parameters give developers a clearer expectation of parameter types
 
 ### Misspelled CSS variables
 This rule detects misspelled CSS variables name in JavaScript files, and suggest a quick fix based on global CSS variables defined in a main.css file
@@ -32,6 +32,16 @@ This rule detects misspelled CSS variables name in JavaScript files, and suggest
 - Prevent error-prone situations
 - Automatically suggest the most likely CSS variable name based on available global CSS variables
 - When inserting a new global variable, this rule reminds the developer to create the global variable
+
+## Init the repository
+After cloning the repository locally, execute:
+
+```
+npm install
+```
+
+## Preview the ESlint rules
+**Refresh** your IDE and then open the file public/main.js to visualize the ESlint rules in action
 
 ## Run tests
 Execute the tests using the command:
