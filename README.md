@@ -25,7 +25,6 @@ The benefits of this approach are the following:
 - *Improved code predictability*. Respecting the parameter structure across the codebase makes the code more predictable and easier to understand, as the developer is nudged to stick to agreed conventions.
 
 *Other examples*
-Complex parameter structures are simplified by suggesting the use of a single object
 
 ``` function(a, b, c) {...} ``` &rarr; ``` function( {a, b, c} = {} ) {...} ```
 
