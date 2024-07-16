@@ -8,7 +8,7 @@ const btn = document.querySelector("button");
 btn.addEventListener("clck", () => {});
 
 // Invalid css variable shall trigger an eslint error. A fix shall be suggested
-btn.style.color = "var(--text-grn)";
+btn.style.color = "var(--text-grey)";
 
 // Prefer named parameters when 3 or more parameters are required
 function calcPayment( price = 100, discount = 20, quantity = 2 ) {
